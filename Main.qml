@@ -39,10 +39,10 @@ ApplicationWindow {
 
     Rectangle {
         anchors.fill: parent; radius: 12
-        color: "#fafafa"
-        border.color: "#dadce0"; border.width: 1
+        color: "#1E1E1E"
+        border.color: "#333333"; border.width: 1
 
-        // Material elevation shadow (dp=2)
+        // Material elevation shadow (dp=2) — subtle dark glow
         Rectangle { anchors.fill:parent; anchors.margins:-1; radius:13; z:-1
             color:"transparent"; border.color:"#0d000000"; border.width:3 }
         Rectangle { anchors.fill:parent; anchors.margins:-3; radius:15; z:-2
@@ -50,15 +50,15 @@ ApplicationWindow {
         Rectangle { anchors.fill:parent; anchors.margins:-6; radius:18; z:-3
             color:"transparent"; border.color:"#03000000"; border.width:5 }
 
-        // Minimize button — Material style circle with −
+        // Minimize button
         Rectangle {
             x: parent.width - 36; y: 14
             width: 28; height: 28; radius: 14
-            color: mb.containsMouse ? "#e8eaed" : "transparent"
+            color: mb.containsMouse ? "#333333" : "transparent"
             Behavior on color { ColorAnimation { duration: 120 } }
             Text {
                 anchors.centerIn: parent
-                text: "\u2212"; color: "#5f6368"; font.pixelSize: 16; font.weight: Font.Bold
+                text: "\u2212"; color: "#8A8166"; font.pixelSize: 16; font.weight: Font.Bold
             }
             MouseArea {
                 id: mb; anchors.fill: parent; hoverEnabled: true
@@ -72,51 +72,50 @@ ApplicationWindow {
             Text {
                 Layout.alignment: Qt.AlignLeft
                 text: "Screenshot"
-                color: "#202124"; font.pixelSize: 18; font.weight: Font.Bold
+                color: "#F3E0A5"; font.pixelSize: 18; font.weight: Font.Bold
             }
 
             // Shortcut row — Region
             RowLayout {
                 Layout.alignment: Qt.AlignLeft; spacing: 10
-                // Keycap: Ctrl
-                Rectangle { width: 32; height: 24; radius: 5; color: "#f1f3f4"; border.color: "#dadce0"; border.width: 1
-                    Text { anchors.centerIn:parent; text:"Ctrl"; color:"#5f6368"; font.pixelSize:10; font.weight:Font.DemiBold } }
-                Text { text:"+"; color:"#bdc1c6"; font.pixelSize:12 }
-                Rectangle { width: 32; height: 24; radius: 5; color: "#f1f3f4"; border.color: "#dadce0"; border.width: 1
-                    Text { anchors.centerIn:parent; text:"Shift"; color:"#5f6368"; font.pixelSize:10; font.weight:Font.DemiBold } }
-                Text { text:"+"; color:"#bdc1c6"; font.pixelSize:12 }
-                Rectangle { width: 24; height: 24; radius: 5; color: "#f1f3f4"; border.color: "#dadce0"; border.width: 1
-                    Text { anchors.centerIn:parent; text:"A"; color:"#5f6368"; font.pixelSize:12; font.weight:Font.DemiBold } }
-                Text { text:"\u2014"; color:"#dadce0"; font.pixelSize:12 }
-                Text { text:"Region"; color:"#5f6368"; font.pixelSize:13 }
+                Rectangle { width: 32; height: 24; radius: 5; color: "#2A2A2A"; border.color: "#444444"; border.width: 1
+                    Text { anchors.centerIn:parent; text:"Ctrl"; color:"#8A8166"; font.pixelSize:10; font.weight:Font.DemiBold } }
+                Text { text:"+"; color:"#5A5444"; font.pixelSize:12 }
+                Rectangle { width: 32; height: 24; radius: 5; color: "#2A2A2A"; border.color: "#444444"; border.width: 1
+                    Text { anchors.centerIn:parent; text:"Shift"; color:"#8A8166"; font.pixelSize:10; font.weight:Font.DemiBold } }
+                Text { text:"+"; color:"#5A5444"; font.pixelSize:12 }
+                Rectangle { width: 24; height: 24; radius: 5; color: "#2A2A2A"; border.color: "#444444"; border.width: 1
+                    Text { anchors.centerIn:parent; text:"A"; color:"#8A8166"; font.pixelSize:12; font.weight:Font.DemiBold } }
+                Text { text:"\u2014"; color:"#333333"; font.pixelSize:12 }
+                Text { text:"Region"; color:"#8A8166"; font.pixelSize:13 }
             }
 
             // Shortcut row — Fullscreen
             RowLayout {
                 Layout.alignment: Qt.AlignLeft; spacing: 10
-                Rectangle { width: 32; height: 24; radius: 5; color: "#f1f3f4"; border.color: "#dadce0"; border.width: 1
-                    Text { anchors.centerIn:parent; text:"Ctrl"; color:"#5f6368"; font.pixelSize:10; font.weight:Font.DemiBold } }
-                Text { text:"+"; color:"#bdc1c6"; font.pixelSize:12 }
-                Rectangle { width: 32; height: 24; radius: 5; color: "#f1f3f4"; border.color: "#dadce0"; border.width: 1
-                    Text { anchors.centerIn:parent; text:"Shift"; color:"#5f6368"; font.pixelSize:10; font.weight:Font.DemiBold } }
-                Text { text:"+"; color:"#bdc1c6"; font.pixelSize:12 }
-                Rectangle { width: 24; height: 24; radius: 5; color: "#f1f3f4"; border.color: "#dadce0"; border.width: 1
-                    Text { anchors.centerIn:parent; text:"S"; color:"#5f6368"; font.pixelSize:12; font.weight:Font.DemiBold } }
-                Text { text:"\u2014"; color:"#dadce0"; font.pixelSize:12 }
-                Text { text:"Full Screen"; color:"#5f6368"; font.pixelSize:13 }
+                Rectangle { width: 32; height: 24; radius: 5; color: "#2A2A2A"; border.color: "#444444"; border.width: 1
+                    Text { anchors.centerIn:parent; text:"Ctrl"; color:"#8A8166"; font.pixelSize:10; font.weight:Font.DemiBold } }
+                Text { text:"+"; color:"#5A5444"; font.pixelSize:12 }
+                Rectangle { width: 32; height: 24; radius: 5; color: "#2A2A2A"; border.color: "#444444"; border.width: 1
+                    Text { anchors.centerIn:parent; text:"Shift"; color:"#8A8166"; font.pixelSize:10; font.weight:Font.DemiBold } }
+                Text { text:"+"; color:"#5A5444"; font.pixelSize:12 }
+                Rectangle { width: 24; height: 24; radius: 5; color: "#2A2A2A"; border.color: "#444444"; border.width: 1
+                    Text { anchors.centerIn:parent; text:"S"; color:"#8A8166"; font.pixelSize:12; font.weight:Font.DemiBold } }
+                Text { text:"\u2014"; color:"#333333"; font.pixelSize:12 }
+                Text { text:"Full Screen"; color:"#8A8166"; font.pixelSize:13 }
             }
 
             // Divider
-            Rectangle { Layout.fillWidth:true; height:1; color:"#e8eaed" }
+            Rectangle { Layout.fillWidth:true; height:1; color:"#2E2E2E" }
 
             // Drag hint
             RowLayout {
                 Layout.alignment: Qt.AlignLeft; spacing: 10
-                Rectangle { width: 32; height: 24; radius: 5; color: "#f1f3f4"; border.color: "#dadce0"; border.width: 1
-                    Text { anchors.centerIn:parent; text:"Ctrl"; color:"#5f6368"; font.pixelSize:10; font.weight:Font.DemiBold } }
-                Text { text:"+ Drag"; color:"#bdc1c6"; font.pixelSize:12 }
-                Text { text:"\u2014"; color:"#dadce0"; font.pixelSize:12 }
-                Text { text:"Drag the pictures to paste"; color:"#5f6368"; font.pixelSize:13 }
+                Rectangle { width: 32; height: 24; radius: 5; color: "#2A2A2A"; border.color: "#444444"; border.width: 1
+                    Text { anchors.centerIn:parent; text:"Ctrl"; color:"#8A8166"; font.pixelSize:10; font.weight:Font.DemiBold } }
+                Text { text:"+ Drag"; color:"#5A5444"; font.pixelSize:12 }
+                Text { text:"\u2014"; color:"#333333"; font.pixelSize:12 }
+                Text { text:"Drag the pictures to paste"; color:"#8A8166"; font.pixelSize:13 }
             }
 
         }

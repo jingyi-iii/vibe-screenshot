@@ -6,42 +6,14 @@
 #include <QSystemTrayIcon>
 #include <QMenu>
 #include <QStyle>
-#include <QPainter>
-#include <QPixmap>
+#include <QIcon>
 #include <QDebug>
 #include "screenshotmanager.h"
-
-// Create app icon programmatically (multiple sizes for taskbar)
-static QIcon createAppIcon()
-{
-    QIcon icon;
-    for (int s : {16, 24, 32, 48, 64}) {
-        QPixmap pix(s, s);
-        pix.fill(Qt::transparent);
-        QPainter p(&pix);
-        p.setRenderHint(QPainter::Antialiasing);
-        // Background rounded rect
-        p.setBrush(QColor("#4a90d9"));
-        p.setPen(Qt::NoPen);
-        int m = s / 8;
-        p.drawRoundedRect(m, m, s - m*2, s - m*2, s/5.0, s/5.0);
-        // Camera lens circle
-        int r = s / 5;
-        p.setBrush(QColor("#ffffff"));
-        p.drawEllipse(QPointF(s*0.55, s*0.45), r, r);
-        // Camera body
-        p.setBrush(QColor("#ffffff"));
-        p.drawRoundedRect(s*0.3, s*0.3, s*0.35, s*0.35, r/2, r/2);
-        p.end();
-        icon.addPixmap(pix);
-    }
-    return icon;
-}
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    app.setWindowIcon(createAppIcon());
+    app.setWindowIcon(QIcon(":/icon.png"));
     app.setQuitOnLastWindowClosed(false);
 
     QQmlApplicationEngine engine;
@@ -61,7 +33,7 @@ int main(int argc, char *argv[])
 
     // Create system tray icon
     QSystemTrayIcon *trayIcon = new QSystemTrayIcon(&app);
-    trayIcon->setIcon(createAppIcon());
+    trayIcon->setIcon(QIcon(":/icon.png"));
     trayIcon->setToolTip(QStringLiteral("Screenshot Tool\nCtrl+Shift+A: Region\nCtrl+Shift+S: Full Screen"));
 
     QMenu *trayMenu = new QMenu();

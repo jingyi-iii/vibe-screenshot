@@ -1,0 +1,31 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "static-release",
+            "displayName": "Static Release (standalone exe)",
+            "description": "Build with bundled static Qt — produces a single .exe with no DLL dependencies",
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/build/static-release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_PREFIX_PATH": "${sourceDir}/vendor/Qt/6.11.1-static",
+                "CMAKE_MAKE_PROGRAM": "C:/Qt/Tools/mingw1310_64/bin/mingw32-make.exe",
+                "CMAKE_CXX_COMPILER": "C:/Qt/Tools/mingw1310_64/bin/g++.exe"
+            }
+        },
+        {
+            "name": "static-debug",
+            "displayName": "Static Debug",
+            "description": "Static Qt debug build (large .exe, for debugging)",
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/build/static-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_PREFIX_PATH": "${sourceDir}/vendor/Qt/6.11.1-static",
+                "CMAKE_MAKE_PROGRAM": "C:/Qt/Tools/mingw1310_64/bin/mingw32-make.exe",
+                "CMAKE_CXX_COMPILER": "C:/Qt/Tools/mingw1310_64/bin/g++.exe"
+            }
+        }
+    ]
+}

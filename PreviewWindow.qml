@@ -40,7 +40,7 @@ Window {
     Rectangle { x:g-6; y:g-6; width:cw+12; height:ch+12; radius:12; z:-3; color:"transparent"; border.color:"#04000000"; border.width:5 }
 
     // Card
-    Rectangle { id:card; x:g; y:g; width:cw; height:ch; color:"#fafafa"; radius:6; border.color:"#dadce0"; border.width:1
+    Rectangle { id:card; x:g; y:g; width:cw; height:ch; color:"#1E1E1E"; radius:6; border.color:"#333333"; border.width:1
         Image { id:img; anchors.centerIn:parent; width:dw; height:dh; fillMode:Image.PreserveAspectFit
             source:imagePath?"file:///"+imagePath.replace(/\\/g,"/"):""; sourceSize.width:mxW; sourceSize.height:mxH
             smooth:true; cache:false; asynchronous:false
@@ -51,24 +51,24 @@ Window {
             Drag.mimeData: imagePath ? { "text/uri-list": ["file:///" + imagePath.replace(/\\/g, "/")] } : {}
             Drag.supportedActions: Qt.CopyAction
         }
-        Rectangle { anchors.fill:parent; color:"#fafafa"; visible:img.status!==Image.Ready
-            Text { anchors.centerIn:parent; text:"..."; color:"#bdc1c6"; font.pixelSize:14; font.family:"Segoe UI" } }
+        Rectangle { anchors.fill:parent; color:"#1E1E1E"; visible:img.status!==Image.Ready
+            Text { anchors.centerIn:parent; text:"..."; color:"#5A5444"; font.pixelSize:14; font.family:"Segoe UI" } }
 
         // Overlay
-        Rectangle { anchors.fill:parent; radius:6; color:"#aaffffff"; opacity:h?1:0
+        Rectangle { anchors.fill:parent; radius:6; color:"#cc1E1E1E"; opacity:h?1:0
 
             Row { anchors.centerIn:parent; spacing:24
                 // Copy
                 Rectangle { id:copyBtn; width:48; height:48; radius:16
-                    color: b1.containsMouse ? (b1.pressed ? "#d2e3fc" : "#e8f0fe") : (copyBtn.cpDone ? "#e6f4ea" : "#f1f3f4")
+                    color: b1.containsMouse ? (b1.pressed ? "#3D3020" : "#2A2418") : (copyBtn.cpDone ? "#1A2E1A" : "#252525")
                     scale: b1.pressed ? 0.88 : 1.0
                     Behavior on scale { NumberAnimation{duration:100; easing.type:Easing.OutBack} }
                     Behavior on color { ColorAnimation{duration:150} }
                     property bool cpDone: false
                     Rectangle { x:15; y:11; width:18; height:22; radius:3
-                        color:"transparent"; border.color: copyBtn.cpDone ? "#34a853" : "#1a73e8"; border.width:2 }
+                        color:"transparent"; border.color: copyBtn.cpDone ? "#34a853" : "#D19740"; border.width:2 }
                     Rectangle { x:10; y:14; width:18; height:22; radius:3
-                        color:"#f1f3f4"; border.color: copyBtn.cpDone ? "#34a853" : "#1a73e8"; border.width:2 }
+                        color:"#252525"; border.color: copyBtn.cpDone ? "#34a853" : "#D19740"; border.width:2 }
                     MouseArea { id:b1; anchors.fill:parent; hoverEnabled:true; cursorShape:Qt.PointingHandCursor
                         onClicked: {
                             screenshotManager.copyImageToClipboard(imagePath)
@@ -79,24 +79,24 @@ Window {
                 }
                 // Fullscreen preview
                 Rectangle { width:48; height:48; radius:16
-                    color: b2.containsMouse ? (b2.pressed ? "#d4d9e0" : "#e8eaed") : "#f1f3f4"
+                    color: b2.containsMouse ? (b2.pressed ? "#3D3020" : "#2A2418") : "#252525"
                     scale: b2.pressed ? 0.88 : 1.0
                     Behavior on scale { NumberAnimation{duration:100; easing.type:Easing.OutBack} }
                     Behavior on color { ColorAnimation{duration:150} }
                     // Maximize icon — four corner brackets
-                    Rectangle { x:12; y:14; width:8; height:2; radius:1; color:"#5f6368" }
-                    Rectangle { x:12; y:14; width:2; height:8; radius:1; color:"#5f6368" }
-                    Rectangle { x:28; y:14; width:8; height:2; radius:1; color:"#5f6368" }
-                    Rectangle { x:34; y:14; width:2; height:8; radius:1; color:"#5f6368" }
-                    Rectangle { x:12; y:32; width:8; height:2; radius:1; color:"#5f6368" }
-                    Rectangle { x:12; y:26; width:2; height:8; radius:1; color:"#5f6368" }
-                    Rectangle { x:28; y:32; width:8; height:2; radius:1; color:"#5f6368" }
-                    Rectangle { x:34; y:26; width:2; height:8; radius:1; color:"#5f6368" }
+                    Rectangle { x:12; y:14; width:8; height:2; radius:1; color:"#8A8166" }
+                    Rectangle { x:12; y:14; width:2; height:8; radius:1; color:"#8A8166" }
+                    Rectangle { x:28; y:14; width:8; height:2; radius:1; color:"#8A8166" }
+                    Rectangle { x:34; y:14; width:2; height:8; radius:1; color:"#8A8166" }
+                    Rectangle { x:12; y:32; width:8; height:2; radius:1; color:"#8A8166" }
+                    Rectangle { x:12; y:26; width:2; height:8; radius:1; color:"#8A8166" }
+                    Rectangle { x:28; y:32; width:8; height:2; radius:1; color:"#8A8166" }
+                    Rectangle { x:34; y:26; width:2; height:8; radius:1; color:"#8A8166" }
                     MouseArea { id:b2; anchors.fill:parent; hoverEnabled:true; cursorShape:Qt.PointingHandCursor
                         onClicked: fsView.show() } }
                 // Save
                 Rectangle { width:48; height:48; radius:16
-                    color: b3.containsMouse ? (b3.pressed ? "#ceead6" : "#e6f4ea") : "#f1f3f4"
+                    color: b3.containsMouse ? (b3.pressed ? "#1A3A1A" : "#1A2E1A") : "#252525"
                     scale: b3.pressed ? 0.88 : 1.0
                     Behavior on scale { NumberAnimation{duration:100; easing.type:Easing.OutBack} }
                     Behavior on color { ColorAnimation{duration:150} }
@@ -108,7 +108,7 @@ Window {
                         onClicked:screenshotManager.saveImageToFile(imagePath) } }
                 // Close
                 Rectangle { width:48; height:48; radius:16
-                    color: b4.containsMouse ? (b4.pressed ? "#f5d0d0" : "#fce8e6") : "#f1f3f4"
+                    color: b4.containsMouse ? (b4.pressed ? "#3D1818" : "#2E1818") : "#252525"
                     scale: b4.pressed ? 0.88 : 1.0
                     Behavior on scale { NumberAnimation{duration:100; easing.type:Easing.OutBack} }
                     Behavior on color { ColorAnimation{duration:150} }
@@ -146,10 +146,10 @@ Window {
     // ═══ Fullscreen viewer ═══
     Window {
         id: fsView
-        visible: false; color: "#e61a1a1a"; title: ""
+        visible: false; color: "#151515"; title: ""
         flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
 
-        Rectangle { anchors.fill:parent; color:"#e61a1a1a" }
+        Rectangle { anchors.fill:parent; color:"#151515" }
 
         Image {
             anchors.centerIn: parent
@@ -163,7 +163,7 @@ Window {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom; anchors.bottomMargin: 40
             text: "Click anywhere or press Esc to close"
-            color: "#888888"; font.pixelSize: 13
+            color: "#5A5444"; font.pixelSize: 13
         }
 
         MouseArea { anchors.fill:parent; onClicked:fsView.close() }
