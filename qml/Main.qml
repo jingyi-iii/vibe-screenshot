@@ -62,7 +62,7 @@ ApplicationWindow {
             }
             MouseArea {
                 id: mb; anchors.fill: parent; hoverEnabled: true
-                cursorShape: Qt.PointingHandCursor; onClicked: { screenshotManager.cancelRegionCapture(); rs.dismiss(); w.visible = false }
+                cursorShape: Qt.PointingHandCursor; onClicked: { w.hide() }
             }
         }
 

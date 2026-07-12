@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 
     // Register global hotkeys after the window is fully created
     // Use a short delay to ensure the native window handle is ready
-    QTimer::singleShot(200, [&engine, manager, &mainWindow]() {
+    QTimer::singleShot(200, [&engine, manager, &mainWindow, trayIcon]() {
         const auto &rootObjects = engine.rootObjects();
         if (!rootObjects.isEmpty()) {
             QWindow *window = qobject_cast<QWindow *>(rootObjects.first());
@@ -75,6 +75,15 @@ int main(int argc, char *argv[])
                 mainWindow = window;
                 qDebug() << "Main window HWND:" << window->winId();
                 manager->registerGlobalHotkeys(window);
+
+                // Notify user when window is minimized to tray
+                QObject::connect(window, &QWindow::visibleChanged, [trayIcon, window]() {
+                    if (!window->isVisible())
+                        trayIcon->showMessage(
+                            QStringLiteral("Screenshot Tool"),
+                            QStringLiteral("Running in tray. Double-click to show, or use Ctrl+Shift+A / Ctrl+Shift+S."),
+                            QSystemTrayIcon::Information, 3000);
+                });
             } else {
                 qWarning() << "Root object is not a QWindow";
             }
